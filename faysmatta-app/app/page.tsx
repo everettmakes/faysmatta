@@ -51,26 +51,27 @@ export default function HomePage() {
         <p>Loading matts...</p>
       ) : (
         matts.map((mat) => (
-          <div
-            key={mat.id}
-            className={`border p-4 rounded shadow ${
-              mat.stock === 0 ? 'opacity-50' : ''
-            }`}
-          >
-            <h2 className="text-xl font-semibold mb-2">{mat.name}</h2>
+        <div
+        key={mat.id}
+        className="max-w-md mx-auto border p-4 rounded shadow"
+        >
+        <h2 className="text-xl font-semibold mb-2">{mat.name}</h2>
+        <div className="flex justify-center items-center h-64 mb-2 overflow-hidden rounded">
             <img
-              src={mat.image}
-              alt={mat.name}
-              className="mb-2 rounded max-h-64 object-cover"
+            src={mat.image}
+            alt={mat.name}
+            className="max-h-full object-cover"
             />
-            <p className="text-md text-gray-700 mb-1">{mat.description}</p>
-            <p className="text-lg font-medium mb-2">Price: {mat.price}</p>
-            {mat.stock > 0 ? (
-              <RequestForm product={mat} />
-            ) : (
-              <p className="text-red-600 font-semibold">Sold Out</p>
-            )}
-          </div>
+        </div>
+        <p className="text-md text-gray-700 mb-1">{mat.description}</p>
+        <p className="text-lg font-medium mb-2">Price: {mat.price}</p>
+        {mat.stock > 0 ? (
+            <RequestForm product={mat} />
+        ) : (
+            <p className="text-red-600 font-semibold">Sold Out</p>
+        )}
+        </div>
+
         ))
       )}
     </main>
