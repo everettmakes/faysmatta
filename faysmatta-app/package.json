@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "next": "latest",
+    "papaparse": "^5.5.3",
     "react": "latest",
     "react-dom": "latest",
     "resend": "^4.6.0"
   },
   "devDependencies": {
     "@types/node": "24.0.4",
+    "@types/papaparse": "^5.3.16",
     "@types/react": "19.1.8",
     "eslint": "latest",
     "eslint-config-next": "latest"
