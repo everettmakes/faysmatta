@@ -3,9 +3,11 @@
 import { useState, FormEvent } from 'react';
 
 interface Product {
+  id?: string;
   name: string;
   image: string;
   price: string;
+  stock?: number;
 }
 
 interface RequestFormProps {
@@ -22,45 +24,47 @@ export default function RequestForm({ product }: RequestFormProps) {
     setLoading(true);
     setError('');
 
-    const target = e.target as typeof e.target & {
-      name: { value: string };
-      email: { value: string };
-      message: { value: string };
-    };
+    const target = e.currentTarget as HTMLFormElement;
 
     const formData = {
-      name: target.name.value,
-      email: target.email.value,
-      message: target.message.value,
+      name: (target.elements.namedItem('name') as HTMLInputElement).value,
+      email: (target.elements.namedItem('email') as HTMLInputElement).value,
+      message: (target.elements.namedItem('message') as HTMLTextAreaElement).value,
       product,
     };
 
-    const res = await fetch('/api/request-to-buy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const res = await fetch('/api/request-to-buy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    if (res.ok) {
-      setSubmitted(true);
-      e.currentTarget.reset();
-    } else {
+      if (res.ok) {
+        setSubmitted(true);
+        e.currentTarget.reset();
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
       setError('Something went wrong. Please try again.');
     }
     setLoading(false);
   };
 
-  if (submitted) return <p className="text-green-600">Thanks! We’ll be in touch soon.</p>;
+  if (submitted) {
+    return <p className="success-message">Thanks! We’ll be in touch soon.</p>;
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input name="name" required placeholder="Your name" className="border p-2 w-full" />
-      <input name="email" type="email" required placeholder="Your email" className="border p-2 w-full" />
-      <textarea name="message" placeholder="Optional message" className="border p-2 w-full" />
-      <button type="submit" disabled={loading} className="bg-blue-600 text-white py-2 px-4 rounded">
+    <form onSubmit={handleSubmit} className="request-form">
+      <input name="name" required placeholder="Your name" className="input-field" />
+      <input name="email" type="email" required placeholder="Your email" className="input-field" />
+      <textarea name="message" placeholder="Optional message" className="textarea-field" />
+      <button type="submit" disabled={loading} className="submit-button">
         {loading ? 'Sending...' : 'Request to Buy'}
       </button>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </form>
   );
 }

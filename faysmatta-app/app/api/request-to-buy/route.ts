@@ -1,20 +1,25 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const SHEET_ENDPOINT = process.env.SHEETDB_API_URL!;
+const resend = new Resend(process.env.RESEND_API_KEY!);
+const SHEET_ENDPOINT = process.env.SHEETDB_API_URL;
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const { name, email, message, product } = body;
-
-  if (!name || !email || !product?.name) {
-    return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
-  }
-
-  const date = new Date().toISOString();
-
   try {
+    const body = await req.json();
+    const { name, email, message, product } = body;
+
+    if (!name || !email || !product?.name) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    if (!SHEET_ENDPOINT) {
+      return NextResponse.json({ error: 'Server misconfiguration: Sheet endpoint missing' }, { status: 500 });
+    }
+
+    const date = new Date().toISOString();
+
+    // Send email
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'jeverer@gmail.com',
@@ -29,6 +34,7 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    // Post to SheetDB
     await fetch(SHEET_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -46,7 +52,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (err: any) {
-    console.error(err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('Error in request-to-buy API:', err);
+    return NextResponse.json({ error: err.message || 'Internal Server Error' }, { status: 500 });
   }
 }
