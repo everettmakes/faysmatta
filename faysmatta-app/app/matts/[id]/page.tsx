@@ -27,6 +27,9 @@ export default function DetailsPage({ params }: DetailsPageProps) {
 
   useEffect(() => {
     const fetchMatts = async () => {
+      const cloudName = "dqnjc6i7b"; // Replace with your Cloudinary cloud name
+      const folder = "v1751546002"; // Replace with your Cloudinary folder name
+
       const res = await fetch(
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQpNUuc862lCAPVDHcRsXTAI4BpZLmOstQVqPU54EzVvS7x89qgANn68tNXMZUfZQECEpC_gZMay_vd/pub?gid=0&single=true&output=csv'
       );
@@ -38,7 +41,9 @@ export default function DetailsPage({ params }: DetailsPageProps) {
         id: row.ID || '',
         name: row.Name || '',
         description: row.Description || '',
-        image: row.Img ? `/imgs/${row.Img}` : '/imgs/placeholder.jpg',
+        image: row.Img
+          ? `https://res.cloudinary.com/${cloudName}/image/upload/${folder}/${row.Img}`
+          : '/imgs/placeholder.jpg',
         price: row.Price || '',
         stock: parseInt(row.Stock || '0'),
       }));
