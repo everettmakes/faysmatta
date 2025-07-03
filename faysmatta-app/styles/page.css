@@ -1,98 +1,59 @@
-/* page.css */
-
+/* General */
 .main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
 }
 
 .heading {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
+/* Grid of mats */
 .matts-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .matts-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .matts-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .mat-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.mat-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.mat-image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 250px;
-  overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: 12px;
-}
-
-.mat-image {
-  max-height: 100%;
-  width: auto;
-  object-fit: cover;
-}
-
-.mat-description {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-.mat-price {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.mat-soldout {
-  color: #d00;
-  font-weight: bold;
-}
-
-.image-card {
   position: relative;
-  display: block;
-  border-radius: 8px;
-  overflow: hidden;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  transition: transform 0.3s ease;
+}
+
+.mat-card:hover {
+  transform: scale(1.05);
 }
 
 .mat-image {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
   transition: filter 0.3s ease;
 }
 
-.image-card:hover .mat-image {
+.mat-card:hover .mat-image {
   filter: brightness(70%);
 }
 
@@ -100,98 +61,84 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
+  user-select: none;
 }
 
-.image-card:hover .overlay {
+.mat-card:hover .overlay {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.view-button {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.view-button:hover {
-  background-color: white;
-}
-
-/* Detail page layout */
-
-.mat-detail {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 20px;
-}
-
-.mat-detail-image {
-  flex: 1 1 300px;
-  max-width: 400px;
+/* Detail page */
+.detail-page img.detail-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
   border-radius: 8px;
-  object-fit: cover;
-  height: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.mat-detail-info {
-  flex: 1 1 300px;
+.soldout-text {
+  color: #dc2626;
+  font-weight: 700;
+  margin-top: 1rem;
 }
 
+/* Form styles */
 .request-form {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.input-field,
-.textarea-field {
-  border: 1px solid #ccc;
+.input-field, .textarea-field {
   padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   font-size: 1rem;
-  border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .textarea-field {
-  min-height: 100px;
+  min-height: 80px;
   resize: vertical;
 }
 
 .submit-button {
-  background-color: #2563eb; /* blue */
+  background-color: #2563eb;
   color: white;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
   border: none;
-  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .submit-button:disabled {
-  background-color: #93c5fd; /* lighter blue */
+  background-color: #93c5fd;
   cursor: not-allowed;
 }
 
-.success-message {
-  color: #16a34a; /* green */
-  font-weight: 600;
-}
-
 .error-message {
-  color: #dc2626; /* red */
+  color: #dc2626;
   font-weight: 600;
 }
 
+.success-message {
+  color: #16a34a;
+  font-weight: 600;
+}

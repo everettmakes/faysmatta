@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import Papa from 'papaparse';
+import { useRouter } from 'next/navigation';
 import RequestForm from '../../../components/RequestForm';
 
 type Mat = {
@@ -14,18 +13,22 @@ type Mat = {
   stock: number;
 };
 
-export default function MatDetailPage() {
-  const params = useParams();
+interface PageProps {
+  params: { id: string };
+}
+
+export default function MatDetailPage({ params }: PageProps) {
   const [mat, setMat] = useState<Mat | null>(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    const fetchMat = async () => {
+    async function fetchMat() {
       const res = await fetch(
         'https://docs.google.com/spreadsheets/d/e/2PACX-1vQpNUuc862lCAPVDHcRsXTAI4BpZLmOstQVqPU54EzVvS7x89qgANn68tNXMZUfZQECEpC_gZMay_vd/pub?gid=0&single=true&output=csv'
       );
       const csvText = await res.text();
-
-      const parsed = Papa.parse(csvText, { header: true });
+      const parsed = (await import('papaparse')).default.parse(csvText, { header: true });
       const mats = parsed.data.map((row: any) => ({
         id: row.ID || '',
         name: row.Name || '',
@@ -34,32 +37,28 @@ export default function MatDetailPage() {
         price: row.Price || '',
         stock: parseInt(row.Stock || '0'),
       }));
-
-      const foundMat = mats.find((m) => m.id === params.id) || null;
-      setMat(foundMat);
-    };
-
+      const found = mats.find((m) => m.id === params.id) || null;
+      setMat(found);
+      setLoading(false);
+    }
     fetchMat();
   }, [params.id]);
 
-  if (!mat) return <p>Loading mat details...</p>;
+  if (loading) return <p>Loading...</p>;
+  if (!mat) return <p>Mat not found.</p>;
 
   return (
-    <main className="main">
-      <h1 className="heading">{mat.name}</h1>
-      <div className="mat-detail">
-        <img src={mat.image} alt={mat.name} className="mat-detail-image" />
-        <div className="mat-detail-info">
-          <p className="mat-description">{mat.description}</p>
-          <p className="mat-price">Price: {mat.price}</p>
-          <p>Stock: {mat.stock > 0 ? mat.stock : 'Sold Out'}</p>
-          {mat.stock > 0 ? (
-            <RequestForm product={mat} />
-          ) : (
-            <p className="mat-soldout">Sold Out</p>
-          )}
-        </div>
-      </div>
+    <main className="main detail-page">
+      <h1>{mat.name}</h1>
+      <img src={mat.image} alt={mat.name} className="detail-image" />
+      <p>{mat.description}</p>
+      <p><strong>Price:</strong> {mat.price}</p>
+      <p><strong>Stock:</strong> {mat.stock > 0 ? mat.stock : 'Sold Out'}</p>
+      {mat.stock > 0 ? (
+        <RequestForm product={mat} />
+      ) : (
+        <p className="soldout-text">Sold Out</p>
+      )}
     </main>
   );
 }
