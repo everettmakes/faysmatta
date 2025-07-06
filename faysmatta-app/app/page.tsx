@@ -44,7 +44,7 @@ export default function HomePage() {
   }, []);
 
   if (matts.length === 0) {
-    return <p>Loading matts...</p>;
+    return <p>Finding mats...</p>;
   }
 
   return (

@@ -55,7 +55,7 @@ export default function DetailsPage({ params }: DetailsPageProps) {
     fetchMatts();
   }, [id]);
 
-  if (!mat) return <p>Loading...</p>;
+  if (!mat) return <p>Finding the mat...</p>;
 
   return (
     <main className="details-main">
@@ -71,7 +71,7 @@ export default function DetailsPage({ params }: DetailsPageProps) {
       {mat.stock > 0 ? (
         <RequestForm product={mat} />
       ) : (
-        <p className="details-soldout">Sold Out</p>
+        <p className="details-soldout">Sorry. It's gone!</p>
       )}
     </main>
   );
