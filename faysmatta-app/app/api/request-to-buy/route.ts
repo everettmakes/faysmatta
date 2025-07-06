@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     // Send email
     await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'jeverer@gmail.com',
+      to: 'faysmatta@gmail.com',
       subject: `New request: ${product.name}`,
       html: `
         <h2>New Request to Buy</h2>
