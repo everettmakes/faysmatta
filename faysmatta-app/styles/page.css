@@ -1,10 +1,13 @@
 /* Global styles */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #fafafa;
   color: #222;
+}
+
+html, body {
+  font-family: 'Cutive Mono', monospace;
 }
 
 /* Main container */
@@ -72,8 +75,8 @@ body {
   transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
-  font-size: 1.25rem;
-  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+  font-size: 2rem;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -194,7 +197,7 @@ button:hover:not(:disabled) {
 }
 
 .back-button {
-  background-color: pink;
+  background-color: deeppink;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -205,9 +208,9 @@ button:hover:not(:disabled) {
 }
 
 .back-button:hover {
-  background-color: deeppink;
+  background-color: pink;
 }
 
 button:hover:not(:disabled) {
-  background-color: deeppink;
+  background-color: pink;
 }
