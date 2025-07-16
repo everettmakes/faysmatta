@@ -194,7 +194,7 @@ button:hover:not(:disabled) {
 }
 
 .back-button {
-  background-color: pink;
+  background-color: deeppink;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -205,9 +205,9 @@ button:hover:not(:disabled) {
 }
 
 .back-button:hover {
-  background-color: deeppink;
+  background-color: pink;
 }
 
 button:hover:not(:disabled) {
-  background-color: deeppink;
+  background-color: pink;
 }
