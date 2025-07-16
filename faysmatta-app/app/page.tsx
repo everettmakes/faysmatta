@@ -49,7 +49,7 @@ export default function HomePage() {
 
   return (
     <main className="main">
-      <h1 className="heading">faysmatta</h1>
+      <h1 className={`heading`}>faysmatta</h1>
       <div className="matts-grid">
         {matts.map((mat) => (
           <Link key={mat.id} href={`/matts/${mat.id}`} className="mat-card">

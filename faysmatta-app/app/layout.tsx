@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import '../styles/page.css'; // adjust path if needed
+import { Cutive_Mono } from 'next/font/google';
 
 export const metadata = {
   title: 'faysmatta',
@@ -11,9 +12,14 @@ export const viewport = {
   initialScale: 1,
 };
 
+const cutiveMono = Cutive_Mono({
+  subsets: ['latin'],
+  weight: '400',
+});
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cutiveMono.className}>
       <body>{children}</body>
     </html>
   );
