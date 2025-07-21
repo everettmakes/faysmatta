@@ -214,3 +214,47 @@ button:hover:not(:disabled) {
 button:hover:not(:disabled) {
   background-color: pink;
 }
+
+
+
+/* new css */
+
+/* Section wrapper */
+section {
+  margin: 3rem 0;
+}
+
+/* Section title */
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Welcome section */
+.welcome {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #fff5f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Contact section */
+.contact {
+  background-color: #f0f0f0;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.contact a {
+  color: deeppink;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
