@@ -258,3 +258,12 @@ section {
 .contact a:hover {
   text-decoration: underline;
 }
+
+
+/* Ensure font applies to all form fields */
+input,
+textarea,
+button,
+select {
+  font-family: 'Cutive Mono', monospace;
+}
