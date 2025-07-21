@@ -4,7 +4,7 @@
 ![Next.js](https://img.shields.io/badge/next.js-13-blue)
 ![TypeScript](https://img.shields.io/badge/typescript-4.9-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
-![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/faysmatta/ci.yml?branch=main)
+![Build Status](https://img.shields.io/github/actions/workflow/status/everettmakes/faysmatta/ci.yml?branch=main)
 
 ## Live Demo
 
