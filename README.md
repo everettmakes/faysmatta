@@ -10,6 +10,12 @@
 [https://faysmatta.vercel.app](https://faysmatta.vercel.app)  
 ![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)
 
+## Public View
+
+[https://faysmatta.com](https://faysmatta.com)  
+![faysmatta](https://img.shields.io/badge/-Faysmatta-ff69b4?style=flat&logo=yarn&logoColor=white)
+
+
 ## Overview
 
 Faysmatta is a handcrafted rag rug (trasmatta) e-commerce site built with Next.js and TypeScript. It showcases unique woven mats made from upcycled fabrics, combining traditional techniques with modern web design.
