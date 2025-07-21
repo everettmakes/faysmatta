@@ -1,5 +1,16 @@
 # Faysmatta – Handwoven Rag Rugs Website
 
+![Node.js](https://img.shields.io/badge/node.js-14.x-green)
+![Next.js](https://img.shields.io/badge/next.js-13-blue)
+![TypeScript](https://img.shields.io/badge/typescript-4.9-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/faysmatta/ci.yml?branch=main)
+
+## Live Demo
+
+[https://faysmatta.vercel.app](https://faysmatta.vercel.app)  
+![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black?logo=vercel)
+
 ## Overview
 
 Faysmatta is a handcrafted rag rug (trasmatta) e-commerce site built with Next.js and TypeScript. It showcases unique woven mats made from upcycled fabrics, combining traditional techniques with modern web design.
@@ -34,7 +45,7 @@ The site pulls product data dynamically from a Google Sheets CSV, displays an en
 1. **Clone the repo:**
 
    ```bash
-   git clone https://github.com/yourusername/faysmatta.git
+   git clone https://github.com/everettmakes/faysmatta.git
    cd faysmatta
    ```
 
