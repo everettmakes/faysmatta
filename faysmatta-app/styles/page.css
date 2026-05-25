@@ -161,14 +161,19 @@ a { color: inherit; text-decoration: none; }
 
 .mat-overlay-name {
   color: var(--white);
-  font-size: 1.3rem;
-  letter-spacing: 0.05em;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  text-align: center;
+  padding: 0 1rem;
+  line-height: 1.4;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .mat-overlay-price {
   color: var(--tan);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.08em;
 }
 
