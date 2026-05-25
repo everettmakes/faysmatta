@@ -18,6 +18,15 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+# keep the example template
+!.env.local.example
+
+# SQLite database
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+prisma/dev.db
 
 # vercel
 .vercel/
