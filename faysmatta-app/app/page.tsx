@@ -89,7 +89,7 @@ export default function HomePage() {
 
       {/* Admin link */}
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <a href="/admin/login" style={{ fontSize: '0.7rem', letterSpacing: '0.12em', color: 'var(--tan)', textTransform: 'uppercase', opacity: 0.6 }}>
+        <a href="/admin/login" style={{ fontSize: '0.7rem', letterSpacing: '0.12em', color: '#a08060', textTransform: 'uppercase', opacity: 0.7 }}>
           admin
         </a>
       </div>
