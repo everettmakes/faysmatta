@@ -13,7 +13,7 @@
     "@cloudinary/react": "^1.14.3",
     "@cloudinary/url-gen": "^1.21.0",
     "@prisma/client": "^5.22.0",
-    "next": "latest",
+    "next": "15.5.8",
     "papaparse": "^5.5.3",
     "react": "latest",
     "react-dom": "latest",
